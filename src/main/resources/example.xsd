@@ -1,0 +1,78 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service"
+           elementFormDefault="qualified">
+
+    <xs:element name="getUserByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:integer" name="id" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllUsersRequest" />
+
+    <xs:element name="getUserResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element name="user" type="tns:user" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllUsersResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="users" type="tns:user" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllFavorsRequest" />
+
+    <xs:element name="getFavorsResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="favors" type="tns:favor" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer" />
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="orders"
+                        type="tns:favorOrder"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+            />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="favor">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer" />
+            <xs:element name="description" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="favorOrder">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer" />
+            <xs:element name="status" type="tns:status" />
+            <xs:element name="favorId" type="xs:integer" />
+            <xs:element name="orderedById" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="status">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CREATED"/>
+            <xs:enumeration value="IN_PROGRESS"/>
+            <xs:enumeration value="FINISHED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
