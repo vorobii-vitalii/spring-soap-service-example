@@ -80,7 +80,7 @@
 				</executions>
 				<configuration>
 					<sources>
-						<source>${project.basedir}/src/main/resources/users.xsd</source>
+						<source>${project.basedir}/src/main/resources/example.xsd</source>
 					</sources>
 				</configuration>
 			</plugin>
