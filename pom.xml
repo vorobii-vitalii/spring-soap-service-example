@@ -50,6 +50,15 @@
 			<version>2.3.2</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.ws/spring-ws-test -->
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-test</artifactId>
+			<version>3.0.10.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
